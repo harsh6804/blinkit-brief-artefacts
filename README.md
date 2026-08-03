@@ -1,0 +1,2 @@
+- [User trial dashboard](https://harsh6804.github.io/blinkit-brief-artefacts/insights.html) - the MVP user test, n=7.
+- [Survey and interview data](https://harsh6804.github.io/blinkit-brief-artefacts/research.html) - survey n=51, ten interviews and the answer sheets.
