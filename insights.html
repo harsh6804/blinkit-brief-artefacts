@@ -134,6 +134,8 @@ h2 em{font-style:normal;color:var(--k400);letter-spacing:.04em;font-weight:700}
 .claim.may li:before{content:"\2713";color:var(--g600)}
 .claim.not li:before{content:"\00D7";color:var(--r600);font-size:17px;top:3px}
 
+.idnote{font-size:13px;color:var(--k400);line-height:1.4;margin:-2px 0 11px}
+.idnote b{color:var(--k600)}
 /* respondent cards, each one opens its own answer sheet */
 .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:9px}
 details.rc{border:1px solid var(--line);border-radius:10px;background:var(--surface);
@@ -167,9 +169,29 @@ details.rc[open]>summary .rc-cta:after{content:"\2039";color:var(--k400)}
 .rc-dur{font-weight:600;letter-spacing:0;text-transform:none;color:var(--k400);margin-left:auto;
   margin-right:4px}
 details.rc[open]{grid-column:1/-1}
-details.rc pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,
-  Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--k900);background:var(--s2);
-  padding:14px;max-height:62vh;overflow:auto;border-top:1px solid var(--line)}
+/* the answer sheet itself: questions and answers, nothing else */
+.sheet{background:var(--s2);border-top:1px solid var(--line);padding:16px 20px 18px;
+  max-height:64vh;overflow:auto}
+.part{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--k400);margin:22px 0 13px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.qa+.part,.shown+.part{margin-top:24px}
+.sheet>.part:first-child{margin-top:0}
+.shown{background:#fff;border:1px solid #C8D8E4;border-left:3px solid #5B8DB8;border-radius:8px;
+  padding:10px 13px;margin:20px 0 14px}
+.shown-k{display:block;font-size:10.5px;font-weight:800;letter-spacing:.11em;
+  text-transform:uppercase;color:#4A7DA8;margin-bottom:3px}
+.shown-t{display:block;font-size:15px;font-weight:700;color:var(--k900);line-height:1.35}
+.shown-d{display:block;font-size:13px;color:var(--k600);line-height:1.5;margin-top:4px}
+.qa{margin-bottom:16px;padding-left:46px;position:relative}
+.qa:last-child{margin-bottom:0}
+.qa .q{font-size:15px;font-weight:650;color:var(--k900);line-height:1.45;margin-bottom:5px;
+  letter-spacing:-.002em}
+.qa .q span{position:absolute;left:0;top:1px;width:36px;text-align:center;font-size:11px;
+  font-weight:800;letter-spacing:.03em;color:var(--g800);background:var(--g100);
+  border-radius:5px;padding:2px 0;line-height:1.5}
+.qa .a{font-size:15px;color:var(--k600);line-height:1.62;margin-bottom:4px;
+  border-left:2px solid #D7DEE4;padding-left:12px}
+.qa .a:last-child{margin-bottom:0}
 
 /* limitation list */
 .lim{list-style:none;counter-reset:l}
@@ -299,8 +321,6 @@ footer{font-size:12.5px;color:var(--k400);padding-top:6px;line-height:1.5}
       <li>At n=7, self reported intent is <b>directional</b>. A signal to build the next test on,
         not a result.</li>
     </ul>
-    <div class="say">Nine responses came in. Two near-identical pairs were collapsed to their
-      earlier submission, which is why the denominator is <b>7 and not 9</b>.</div>
   </div>
 </div>
 
