@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blinkit · survey and interview data</title>
+<meta name="description" content="The primary research behind the Blinkit brief: a 51-person survey, the segment inversion, ten interviews and all ten verbatim answer sheets.">
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#0B3B21;--g800:#14532D;--g600:#1F9D55;--g100:#EAF6EE;
+  --y500:#FFC72C;--y700:#8A6100;--y100:#FEF6E0;
+  --r600:#D64545;--r100:#FDECEC;
+  --k900:#111827;--k600:#4B5563;--k400:#6B7280;
+  --line:#E5E7EB;--surface:#fff;--s2:#F9FAFB;
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--k900);background:#EEF0F3;line-height:1.45;font-size:16px;padding-bottom:40px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+
+/* header band */
+header.top{background:linear-gradient(135deg,#0B3B21 0%,#0F4227 45%,#16532E 100%);
+  color:#fff;padding:26px 0 22px;margin-bottom:18px}
+header.top .hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+header.top h1{font-size:31px;line-height:1.14;font-weight:800;letter-spacing:-.015em}
+header.top h1 span{color:var(--y500)}
+header.top .kicker{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#8FC7A6;margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:640px}
+.chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);color:#E6F4EC;border-radius:999px;padding:4px 11px;white-space:nowrap}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+  min-width:0;display:flex;flex-direction:column}
+.card.tint-g{background:var(--g100);border-color:#BFE3CD}
+.card.tint-a{background:var(--y100);border-color:#F2DFA8}
+.card.tint-r{background:var(--r100);border-color:#F3C9C9}
+.card.dark{background:#0F2A1B;border-color:#0B3B21;color:#fff}
+h2{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--g800);margin-bottom:9px;display:flex;align-items:baseline;gap:8px}
+h2 em{font-style:normal;color:var(--k400);letter-spacing:.04em;font-weight:700}
+.card.dark h2{color:var(--y500)}
+.card.tint-a h2{color:var(--y700)}
+.card.tint-r h2{color:#8B2020}
+.say{font-size:14px;color:var(--k600);margin-top:auto;padding-top:10px}
+.say b{color:var(--k900)}
+.card.dark .say{color:#CFE6D8}
+.card.dark .say b{color:#fff}
+
+/* kpi */
+.kpi{text-align:left}
+.kpi .n{font-size:38px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--g800)}
+.kpi .n.zero{color:var(--r600)}
+.kpi .n small{font-size:19px;font-weight:700;letter-spacing:0}
+.kpi .n.word{font-size:25px;line-height:1.08;letter-spacing:-.01em}
+.kpi .l{font-size:13.5px;color:var(--k600);margin-top:7px;line-height:1.35}
+.kpi .l b{color:var(--k900)}
+
+/* spans */
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}
+.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s9c{grid-column:span 9}
+.s12{grid-column:span 12}
+@media(max-width:1000px){
+  .s2,.s3,.s4,.s5{grid-column:span 6}
+  .s7,.s8,.s9c{grid-column:span 12}
+}
+@media(max-width:640px){.s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9c{grid-column:span 12}}
+
+/* donut */
+.dwrap{display:flex;gap:16px;align-items:center}
+.legend{list-style:none;flex:1;min-width:0}
+.legend li{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);
+  font-size:14px;line-height:1.3}
+.legend li:last-child{border-bottom:0}
+.legend .sw{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+.legend .ct{margin-left:auto;font-weight:800;font-size:19px;padding-left:10px}
+.legend small{display:block;color:var(--k400);font-size:12.5px}
+
+/* likert */
+.lk{list-style:none}
+.lk li{display:grid;grid-template-columns:1fr 108px 132px;gap:10px;align-items:center;
+  padding:7px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.3}
+.lk li:last-child{border-bottom:0}
+.pips{display:flex;gap:3px}
+.pips i{width:18px;height:10px;border-radius:2px;background:var(--line)}
+.pips i.on{background:var(--g600)}
+.pips i.on.w{background:var(--y500)}
+.lk .ag{font-size:13px;color:var(--k600);text-align:right}
+.tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+.tag.g{background:var(--g100);color:var(--g800)}
+.tag.a{background:var(--y100);color:var(--y700)}
+
+/* bars */
+.bars{list-style:none}
+.bars li{display:grid;grid-template-columns:1fr 40px;gap:8px;align-items:center;padding:3px 0}
+.bars .bar{position:relative;height:24px;border-radius:5px;background:var(--s2);overflow:hidden}
+.bars .bar .f{position:absolute;inset:0 auto 0 0;background:var(--g100);border-right:2px solid var(--g600)}
+.bars .bar .f.a{background:var(--y100);border-right-color:var(--y500)}
+.bars .bar .t{position:relative;display:block;padding:3px 8px;font-size:13.5px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.bars .v{text-align:right;font-weight:800;font-size:14px}
+
+/* rank comparison */
+.rank{display:grid;grid-template-columns:1fr 46px 1fr;gap:10px;align-items:center}
+.rank .col{list-style:none}
+.rank .col li{display:flex;align-items:center;gap:8px;height:42px;padding:0 11px;margin-bottom:7px;
+  border:1px solid var(--line);border-radius:8px;background:var(--s2);font-size:14px;line-height:1.2}
+.rank .col li .r{font-weight:800;color:var(--k400);width:15px;flex:0 0 auto}
+.rank .col li .c{margin-left:auto;font-weight:800}
+.rank .col li.hit{background:var(--g100);border-color:#BFE3CD}
+.rank .col li.hit .r,.rank .col li.hit .c{color:var(--g800)}
+.rank .mid{text-align:center;color:var(--k400);font-size:11px;font-weight:800;letter-spacing:.08em}
+.rank .mid div{height:42px;margin-bottom:7px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:#C9CED6}
+.rank .mid div.up{color:var(--g600)}
+.rankhead{display:flex;justify-content:space-between;font-size:12px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--k400);margin-bottom:8px}
+
+/* quote chips */
+.qs{list-style:none;display:flex;flex-direction:column;gap:6px}
+.qs li{font-size:13.5px;line-height:1.35;padding:7px 10px;background:var(--s2);
+  border-left:2px solid var(--g600);border-radius:0 6px 6px 0}
+.qs li.mute{border-left-color:#C9CED6;color:var(--k600)}
+
+/* claim columns */
+.claim{list-style:none}
+.claim li{padding:5px 0 5px 20px;position:relative;font-size:14px;line-height:1.35}
+.claim li:before{position:absolute;left:0;top:5px;font-weight:800}
+.claim.may li:before{content:"\2713";color:var(--g600)}
+.claim.not li:before{content:"\00D7";color:var(--r600);font-size:17px;top:3px}
+
+/* respondent cards, each one opens its own answer sheet */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:9px}
+details.rc{border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  overflow:hidden;border-top:3px solid #C9CED6}
+details.rc.ok{border-top-color:var(--g600)}
+details.rc.warn{border-top-color:var(--y500)}
+details.rc.bad{border-top-color:var(--r600)}
+details.rc.none{border-top-color:#9CA3AF}
+details.rc>summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:5px;
+  padding:11px 12px 10px}
+details.rc>summary::-webkit-details-marker{display:none}
+details.rc>summary:hover{background:var(--s2)}
+.rc-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.rc-top b{font-size:16px;font-weight:800;color:var(--k900);letter-spacing:-.01em}
+.pill{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:999px;padding:3px 7px;white-space:nowrap}
+.pill.ok{background:var(--g100);color:var(--g800)}
+.pill.warn{background:var(--y100);color:var(--y700)}
+.pill.bad{background:var(--r100);color:#8B2020}
+.pill.none{background:#EEF0F3;color:var(--k600)}
+.rc-app{font-size:12.5px;font-weight:700;color:var(--k900)}
+.rc-cat{font-size:12px;color:var(--g800);background:var(--g100);border-radius:5px;
+  padding:3px 7px;align-self:flex-start;line-height:1.3}
+.rc-why{font-size:12.5px;color:var(--k600);line-height:1.35}
+.rc-cta{display:flex;align-items:center;justify-content:space-between;margin-top:3px;
+  padding-top:8px;border-top:1px solid var(--line);font-size:11.5px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--g600)}
+.rc-cta:after{content:"\203A";font-size:17px;line-height:1;margin-left:6px;color:var(--g600)}
+details.rc[open]>summary .rc-cta{color:var(--k400)}
+details.rc[open]>summary .rc-cta:after{content:"\2039";color:var(--k400)}
+.rc-dur{font-weight:600;letter-spacing:0;text-transform:none;color:var(--k400);margin-left:auto;
+  margin-right:4px}
+details.rc[open]{grid-column:1/-1}
+details.rc pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,
+  Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--k900);background:var(--s2);
+  padding:14px;max-height:62vh;overflow:auto;border-top:1px solid var(--line)}
+
+/* limitation list */
+.lim{list-style:none;counter-reset:l}
+.lim li{counter-increment:l;position:relative;padding:6px 0 6px 26px;font-size:13.5px;line-height:1.4;
+  color:var(--k600)}
+.lim li:before{content:counter(l);position:absolute;left:0;top:6px;width:18px;height:18px;
+  border-radius:50%;background:var(--y500);color:#3A2C00;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.lim li b{color:var(--k900)}
+
+/* transcripts */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+details.ts{border:1px solid var(--line);border-radius:9px;background:var(--surface);overflow:hidden}
+details.ts>summary{cursor:pointer;padding:10px 12px;font-weight:700;font-size:14px;color:var(--g800);
+  list-style:none;display:flex;flex-direction:column;gap:2px;background:var(--s2)}
+details.ts>summary::-webkit-details-marker{display:none}
+details.ts>summary i{font-style:normal;font-weight:500;font-size:11.5px;color:var(--k400)}
+details.ts[open]{grid-column:1/-1}
+details.ts pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,
+  Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--k900);background:#fff;
+  padding:14px;max-height:62vh;overflow:auto;border-top:1px solid var(--line)}
+footer{font-size:12.5px;color:var(--k400);padding-top:6px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><div class="hrow">
+  <div><div class="kicker">Blinkit &middot; primary research</div><h1>Fifty-one answered a survey.<br>Ten sat for <span>an interview</span>.</h1></div>
+  <div class="chips"><span class="chip">survey n = 51, recomputed 25 Jul 2026</span><span class="chip">interviews n = 10, coded 27 Jul 2026</span><span class="chip">all 10 answer sheets below</span><span class="chip">two studies, numbers never merged</span></div>
+</div></div></header>
+
+<div class="wrap">
+
+<div class="grid">
+  <div class="card s3 kpi"><div class="n">35<small> of 51</small></div><div class="l">have <b>tried a category</b> they had never bought on the app</div></div>
+  <div class="card s3 kpi"><div class="n">22</div><div class="l">in the key cut: <b>Blinkit-primary, 2&ndash;3+ orders a week</b></div></div>
+  <div class="card s3 kpi"><div class="n">14</div><div class="l">came from <b>Amazon, Flipkart or Nykaa</b>, the top prior channel, above physical shops at 10</div></div>
+  <div class="card s3 kpi"><div class="n">38<small> of 51</small></div><div class="l">are aged <b>22 to 27</b> and from my own network. A sample, not a customer base</div></div>
+</div>
+
+<div class="grid">
+  <div class="card s12">
+    <h2>The inversion <em>&ldquo;what would make you try a new category?&rdquo;, same question, two populations</em></h2>
+    <div class="rankhead"><span>Everyone &middot; n = 51</span>
+      <span>The segment &middot; n = 22</span></div>
+    <div class="rank">
+      <ul class="col"><li class=""><span class="r">1</span><span>Proof it's genuine</span><span class="c">19</span></li><li class=""><span class="r">2</span><span>A recommendation</span><span class="c">19</span></li><li class="hit"><span class="r">3</span><span>Returns, no questions</span><span class="c">18</span></li><li class=""><span class="r">4</span><span>A better price</span><span class="c">12</span></li></ul>
+      <div class="mid"><div class="up">&#8593;</div><div>&#8593;</div><div>&#8595;</div><div>&#8595;</div></div>
+      <ul class="col"><li class="hit"><span class="r">1</span><span>Returns, no questions</span><span class="c">9</span></li><li class=""><span class="r">2</span><span>Proof it's genuine</span><span class="c">9</span></li><li class=""><span class="r">3</span><span>A better price</span><span class="c">7</span></li><li class=""><span class="r">4</span><span>A recommendation</span><span class="c">6</span></li></ul>
+    </div>
+    <div class="say">Ask everyone and returns come <b>third</b>. Ask the people who order most and
+      it comes <b>first</b>. A read of the general sample alone reports the wrong thing about the
+      customers who matter most.</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card s3"><h2>Why they stopped <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Didn't need it</span></div><div class="v">9</div></li><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">No particular reason</span></div><div class="v">9</div></li><li><div class="bar"><span class="f a" style="width:77.8%"></span><span class="t">Couldn't return</span></div><div class="v">7</div></li><li><div class="bar"><span class="f" style="width:55.6%"></span><span class="t">Cheaper elsewhere</span></div><div class="v">5</div></li><li><div class="bar"><span class="f" style="width:33.3%"></span><span class="t">Packaging</span></div><div class="v">3</div></li><li><div class="bar"><span class="f" style="width:33.3%"></span><span class="t">Quality</span></div><div class="v">3</div></li><li><div class="bar"><span class="f" style="width:22.2%"></span><span class="t">Refund hassle</span></div><div class="v">2</div></li><li><div class="bar"><span class="f" style="width:22.2%"></span><span class="t">Out of stock</span></div><div class="v">2</div></li><li><div class="bar"><span class="f" style="width:22.2%"></span><span class="t">Better selection</span></div><div class="v">2</div></li></ul></div>
+  <div class="card s3"><h2>Why the segment stopped <em>n=22</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f a" style="width:100.0%"></span><span class="t">Couldn't return</span></div><div class="v">6</div></li><li><div class="bar"><span class="f" style="width:66.7%"></span><span class="t">No particular reason</span></div><div class="v">4</div></li><li><div class="bar"><span class="f" style="width:50.0%"></span><span class="t">Packaging</span></div><div class="v">3</div></li><li><div class="bar"><span class="f" style="width:50.0%"></span><span class="t">Quality</span></div><div class="v">3</div></li><li><div class="bar"><span class="f" style="width:33.3%"></span><span class="t">Didn't need it again</span></div><div class="v">2</div></li></ul>
+    <div class="say">Same question. <b>Returns move to the top.</b></div></div>
+  <div class="card s3"><h2>What changed after trying <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Stick to fewer</span></div><div class="v">14</div></li><li><div class="bar"><span class="f" style="width:92.9%"></span><span class="t">More willing</span></div><div class="v">13</div></li><li><div class="bar"><span class="f" style="width:64.3%"></span><span class="t">No change</span></div><div class="v">9</div></li></ul>
+    <h2 style="margin-top:12px">The segment <em>n=22</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f a" style="width:100.0%"></span><span class="t">Stick to fewer</span></div><div class="v">10</div></li><li><div class="bar"><span class="f" style="width:40.0%"></span><span class="t">No change</span></div><div class="v">4</div></li><li><div class="bar"><span class="f" style="width:40.0%"></span><span class="t">More willing</span></div><div class="v">4</div></li></ul>
+    <div class="say">The wider sample is a coin flip. The segment <b>narrows</b>.</div></div>
+  <div class="card s3"><h2>Do they check the return policy <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Sometimes</span></div><div class="v">22</div></li><li><div class="bar"><span class="f" style="width:95.5%"></span><span class="t">Always</span></div><div class="v">21</div></li><li><div class="bar"><span class="f" style="width:31.8%"></span><span class="t">Never</span></div><div class="v">7</div></li><li><div class="bar"><span class="f" style="width:4.5%"></span><span class="t">Didn't know there was one</span></div><div class="v">1</div></li></ul>
+    <div class="say"><b>43 of 51</b> look at least sometimes. The policy is read before the risk is taken.</div></div>
+</div>
+
+<div class="grid">
+  <div class="card s4"><h2>How they found the new category <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Urgency</span></div><div class="v">13</div></li><li><div class="bar"><span class="f" style="width:61.5%"></span><span class="t">Home screen or banner</span></div><div class="v">8</div></li><li><div class="bar"><span class="f" style="width:61.5%"></span><span class="t">Search spillover</span></div><div class="v">8</div></li><li><div class="bar"><span class="f" style="width:38.5%"></span><span class="t">Someone mentioned it</span></div><div class="v">5</div></li><li><div class="bar"><span class="f" style="width:30.8%"></span><span class="t">Social or ads</span></div><div class="v">4</div></li><li><div class="bar"><span class="f" style="width:30.8%"></span><span class="t">Can't remember</span></div><div class="v">4</div></li></ul></div>
+  <div class="card s4"><h2>What blocks those who never tried <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Might not be genuine</span></div><div class="v">5</div></li><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Cheaper elsewhere</span></div><div class="v">5</div></li><li><div class="bar"><span class="f" style="width:80.0%"></span><span class="t">Don't think of these apps</span></div><div class="v">4</div></li><li><div class="bar"><span class="f" style="width:80.0%"></span><span class="t">Hard to return</span></div><div class="v">4</div></li><li><div class="bar"><span class="f" style="width:80.0%"></span><span class="t">Often out of stock</span></div><div class="v">4</div></li></ul></div>
+  <div class="card s4"><h2>Top categories tried <em>n=51</em></h2>
+    <ul class="bars"><li><div class="bar"><span class="f" style="width:100.0%"></span><span class="t">Personal care</span></div><div class="v">11</div></li><li><div class="bar"><span class="f" style="width:90.9%"></span><span class="t">Intimate and sexual wellness</span></div><div class="v">10</div></li><li><div class="bar"><span class="f" style="width:90.9%"></span><span class="t">Electronics</span></div><div class="v">10</div></li><li><div class="bar"><span class="f" style="width:72.7%"></span><span class="t">Snacks</span></div><div class="v">8</div></li><li><div class="bar"><span class="f" style="width:72.7%"></span><span class="t">Beauty</span></div><div class="v">8</div></li><li><div class="bar"><span class="f" style="width:63.6%"></span><span class="t">Gifts</span></div><div class="v">7</div></li></ul></div>
+</div>
+
+<div class="grid">
+  <div class="card s3 kpi"><div class="n">4.69<small> vs 2.94</small></div><div class="l">categories bought in three months, <b>explorers against those who never crossed</b></div></div>
+  <div class="card s3 kpi"><div class="n">1.86</div><div class="l">categories per explorer on average. Samplers 2.05, never-again 1.67, adopters 1.43. <b>51% ticked two or more</b></div></div>
+  <div class="card s3 kpi"><div class="n">20<small> up</small></div><div class="l">say spending on the app rose since. 17 same, 3 down, 11 not applicable</div></div>
+  <div class="card s3 tint-a"><h2>Read the survey honestly</h2>
+    <div class="say" style="padding-top:0">Good for <b>mechanism</b>, poor for <b>sizing</b>. The
+      survey never asks a rupee threshold, so the ceiling figure in the brief comes from interviews
+      only. &ldquo;22 of 51&rdquo; is a share of this sample and must not be multiplied by
+      Blinkit's monthly users.</div></div>
+</div>
+
+<div class="grid">
+  <div class="card s4 tint-a"><h2>Four limits, volunteered</h2>
+    <ul class="lim">
+      <li><b>Privacy-heavy skew.</b> 4 of 10 bought intimate categories against 10 of 51 in the survey.</li>
+      <li><b>The final ranking is primed.</b> The concept was described before it was asked, so the
+        unaided reactions earlier in the script are the real evidence.</li>
+      <li><b>One never-tried respondent</b>, blocked on price not trust.</li>
+      <li><b>Age skew inherited</b> from the survey.</li>
+    </ul></div>
+  <div class="card s8"><h2>Written answer sheets, not machine transcripts <em>and why that was measured, not assumed</em></h2>
+    <div class="say" style="padding-top:0">One 16.7-minute recording with clean audio
+      auto-transcribed to <b>562 words</b> against a 2,000+ word conversation, losing roughly three
+      quarters of it, and failing hardest on Hindi-English code-switching, which is to say on
+      <b>return, genuine, review and trust</b>, the exact words the coding counts. So the record is
+      a per-question sheet written the same day in the respondent's own language mix. Lines marked
+      <b>[V]</b> are word for word from the audio, and recordings were kept as evidence.
+      Respondents are User 1 to User 10 and nothing else: no names, contacts or record numbers.</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card s12"><h2>The ten respondents <em>10 completed against 6 planned &middot; open any card for the full answer sheet</em></h2>
+    <div class="rgrid"><details class="rc ok" id="user-1"><summary>
+  <span class="rc-top"><b>User 1</b><span class="pill ok">Continued</span></span>
+  <span class="rc-app">Blinkit &middot; 2&ndash;3 a week</span>
+  <span class="rc-cat">Intimate &middot; Personal care</span>
+  <span class="rc-why">Couldn't return one of them and kept buying anyway</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">18 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app- Blinkit | Freq ______2-3 Times a week____ | Recording saved?   No
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  Today itself, I needed some groceries and Room freshner. I needed few things.
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A:  Zepto, Instamart, Blinkit.
+Blinkit is most used because of fast delivery and availability of a better variety among different categories.
+Q3.  Last ten orders — what would I see?
+A:  Majority would be Groceries, snacks, beverages with an occasional purchase of what I can see as slipper, undergarment and Printouts.
+2 · The crossing story
+The core of the interview
+Q4.  You tried Personal Care products. Take me back, what happened that day?
+A:  Yes, I have ordered personal care products multiple times. I needed it so I checked on blinkit for that specific brand, it was available and I had used it before so I ordered it.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order it on Amazon earlier or from the product site directly.
+Q6.  How did you end up looking for it on the app at all?
+A:  I tried it on Blinkit when it wasn’t available on Amazon and it turned out well so I continued ordering from here itself thereafter.
+Q7.  ★ Before you tapped buy for any new category — what was going through your mind?
+★ Log any risk word they used here UNPROMPTED (trust / genuine / return / review). This is the H1 rule. “Nothing, just bought it” counts too.
+A:  For Skin Care or Hair Care products I usually am not worried since I usually look for the brand that I have used already, but yes when I had ordered Earphone for the first time on Blinkit I was bit worried about what the product would be like because it was my first time ordering it from quick commerce and I saw only after ordering that it couldn’t be returned. I had mistaken the Replacement line with return.
+Q8.  What happened when it arrived?
+A:  It went well actually, I still use those earphones.
+Q9.  ★ You also tried Clothing, Slippers and Printouts from Blinkit. This was Before or after the first?
+If only one category tried: write N/A and skip to Q13. Do not invent a second.
+A:  It was a bit recent, I had already tried a few categories on Blinkit before this.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+★ The momentum question. Push for a mechanism — not just “yes”, but WHAT carried over.
+A:  Not really, this was completely a different occasion and I won’t actually relate the two orders. Although the slippers and undergarments were in same order, but printout was different.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I order groceries quite regularly from Blinkit and I have had some occasional category experiments in Electronics as well so I was comfortable in ordering these. They weren’t that risky purchases as well.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I stopped buying Slippers since I don’t get many options on it now so I buy from Amazon instead. Rest I think I continue, also electronics is completely based on urgency, I don’t risk ordering major electronics from blinkit unless amazon takes more than 2 days two deliver.
+Q14.  ★ What is different about the one that stuck?
+★ The sampler-vs-adopter question. Capture the exact reasoning.
+A:  I had no complaints with that, the price was comparable and it saved me a trip so its better here.
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A:  I ordered a Blender from Amazon. I was not sure of major brands that are into this so I saw the rating and reviews and ordered it. I was assured since it could be returned in case I don’t like it so I went ahead.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+★ Did the word “reviews” come from THEM unprompted? Note exactly what they named.
+A:  Reviews mostly and the return policy. It mentioned 10 day easy return so I was comfortable.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A:  Reviews for sure, since blender is something I haven’t bought earlier I need reviews and also I need a hassle free return on that in case I am not satisfied from the product.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+★ The channel-rule question (H2). Do not offer examples.
+A:  I have not had any major bad experiences on Blinkit as such. I had received few broken eggs once but I had received refund for that easily. I don’t buy it from Blinkit anymore though.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A: Eggs and fruits. I don’t trust blinkit with fruits.
+Q21.  Where do you check first now when you need that category?
+A:  I buy them offline now
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+★ Second H1 checkpoint + the behaviour. Watch for unprompted risk words again.
+A:  I see reviews on Youtube or see if it is available on Amazon instead with same day delivery.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  Yes I had almost ordered a Cooler on blinkit, it was worth around Rs. 6000 and then I chickened out and went to order from amazon instead. I didn’t feel comfortable taking the risk, it was not returnable even at this price.
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+★ The H4 privacy question. Suggest nothing — a volunteered workaround is worth ten prompted.
+A:  I usually add some chips and stuff, its okay mostly since blinkit delivery boy doesn’t check order in front of me, whereas I had an awkward moment when zepto delivery boy was taking photo of the product in front of me.
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Sometimes I do when only few quantities of that item is available on one app or like I said I changed my mind last minute and went to a safer option while purchasing the cooler.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for Electronics/Cooler or other appliances as where you buy it now, would you switch? What would have to be true?
+A:  Yes mostly, I like how convenient these apps are, so I would love that. The only thing that stops me from buying them right now is the lack of return policy and actual individual reviews of people who bought it on blinkit.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  I already am a frequent buyer on blinkit and yes I think when there are more categories to order from, I just add one or two things extra everytime I order. Feels like impulsive buys at times but cant help it.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  Clothes and Phone accessories specifically for me. I don’t think they have enough variety over her and the same non-returnable issue.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  They have surely gotten better, a lot more categories and better coverage of the city.
+6 · Concept test — STRICTLY LAST
+Show each screen one at a time. Note their FIRST reaction before they rationalise.
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+Best answer is a boundary: “under ₹X no, over ₹X yes.” Capture the threshold.
+A:  Yes, if I am able to go through these reviews and I get a statistic like this then I am much comfortable, especially for purchases like blender and other small appliances.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+★ The gating question. Capture the REASON, not just yes/no. “Verified, so more” vs “their own product, so no” are opposite verdicts.
+A:  Amazon reviews are very large in number so I think ill trust them more, but for me that percentage of the statistics like return ease, sealed packing etc. shown are more important in case of blinkit since I can get a review of product form elsewhere as well but need surety of the delivery experience here.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  Honestly I would not right full reviews. Yes I can click on those yes no questions if they are quick and I am reminded about it.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A specific objection (“what counts as eligible?”) is gold — write it exactly.
+A:  I am not quite sure about what it means by gurantee and ease of return. Is it like Amazon Choice? I would need some detail. I know it has something to do with more authenticity so it is nice but I would need some clarity as well.
+6c · Explorer tracker
+Q34.  What would you do with this? Do you understand what it is about?
+If they ask “how does it know?” — capture it. That validates the personalised version.
+A:  Yes I think it some target based thing where I would get a coupon probably if I buy these three categories. But am I restricted to order from these 3 categories only? I might not be needing one of these actually what to do in that case.
+Q35.  ★ After unlocking, what happens next for you?
+★ The killer question. “Nothing, I’d have the reward” vs “I’d keep buying it anyway” decides whether the tracker survives.
+A:  I would know that this product can be ordered here as well and it I the experience is good then I will mostly continue in future when needed. It is anyway more convenient to order here.
+Q36.  Would you buy something you did not need to complete it?
+A yes = your guardrail risk in their words. Quote it.
+A:  It depends, if it is a small thing and I need it in near future then yes.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and be eligible for reward, Reviews of products.
+Q37.  ★ Of the three, which matters to you? Which is noise? Will you switch from amazon/offline or any previous channel because of these three.
+★ Force one of each. Watch if segment people pick Protection while others pick Snapshot.
+A:  The review and Easy return on first new category order return is genuinely helpful, infact the easy return should be available on each particular category type, like earphones, accessories, kitchen appliances etc.
+I like the explorer mode as well but I am not sure it would always suggest me the correct thing. 
+When explained that any new category counts-
+Okay, if it can be counted then it helps pretty much.</pre></details><details class="rc bad" id="user-2"><summary>
+  <span class="rc-top"><b>User 2</b><span class="pill bad">Quit, defected</span></span>
+  <span class="rc-app">Blinkit &middot; 2&ndash;3 a week</span>
+  <span class="rc-cat">Intimate &middot; Personal care</span>
+  <span class="rc-why">Quality, packaging and couldn't return, all three</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">20 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  Today only. I ordered a C-type cable as the one which I had wasn’t working.
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart, Big Basket. I mostly order from Blinkit out of habit and I am more comfortable with it.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly it would be Snacks, beverages and daily use items. I have tried electronics, personal care and Intimate/sexual wellness
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  I check on Blinkit when I need it, if its there I order it.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon or Flipkart mostly for electronics. For personal care as well, I think it was through amazon or else from offline stores
+Q6.  How did you end up looking for it on the app at all?
+A:  I needed it, and I already use blinkit frequently so I checked if they had it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  Whenever I order electronics I just order and hope it goes well, since it cannot be returned. I keep my order price limited in such cases.
+Q8.  What happened when it arrived?
+A:  It was okay I haven’t faced such issues yet.
+Q9.  ★ You also tried other category products apart from Electronics. It was Before or after the first?
+A:  Electronics was the last, I started with groceries, then personal care and then I tried electronics.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  Like I said, I used to order from blinkit across different low value categories so as I progressed I started experimenting based on my needs.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I think I continue almost all the categories if the needs come up. I didn’t face any strong issue yet to abandon a category.
+Q14.  ★ What is different about the one that stuck?
+A:  I had the products delivered as per my expectations
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I bought neck pillow and sports shoes for my parents on Amazon. I looked for the return policy and reviews of previous buyers before ordering. Return policy more importantly so I could decide which shoe suits them and if not I can return it then. It helped me have showroom like trial experience at home.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: Mentioned in Q16- I looked for the return policy and reviews of previous buyers before ordering. Return policy more importantly so I could decide which shoe suits them and if not I can return it then. It helped me have showroom like trial experience at home.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: I would need similar return policy and reviews to be carefree with my purchases.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experience
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: Amazon/ Flipkart.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  If the price is not much I will take the risk based on my previous good experiences with the app, else I would order from E-commerce where I can return it easily.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No can’t remember
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  Yes I order with some filler items.
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Not really. Sometimes if my cart is not completely available on Blinkit then I make some compromises and see on which app can I get majority of my cart.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes my go to place for orders is Blinkit now, so if I have the same reliability as Amazon this app then I would obviously keep my purchases limited to this app.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes the frequency increased.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  I would like to buy Whey protein and shoes from it. I cant right now because it doesn’t have much variety and also I cant return the shoes as easily as I can on E-commerce platforms.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  They have gotten better with time.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A:  Yes it is significantly better as I can now see the reviews of people who actually bought it from Blinkit not just the product review.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  yes if there are enough buyers then it is as good as amazon. Also I like the summary hat focuses on Blinkit based experience, like authenticity, return hassle, packaging.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  It depends on my mood I am not regular in writing reviews. Yes I can surely answer the yes/no questions post delivery as it would help others get a better insight and ill expect that as well on other products.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A:  What exactly is easy return? Is it like amazon?
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  So will I get this reward only if I buy this particular new category? What if don’t want to buy it right now, can I buy from some other new category and still get the reward.
+Q35.  ★ After unlocking, what happens next for you?
+A: I will complete it then it would be need based obviously. If I am ordering anyway then I can look for the list and see if I need anything from the list that I can try and gain reward.
+Q36.  Would you buy something you did not need to complete it?
+A:  I can buy only if I need it in a way, even in future usecase. Also, if it is very expensive hten I might just wait, but for regular pricing I think I would order for the reward.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A:  Yes this helps significantly, I mean the major pain points of review absence and return hassle is getting solved along with the added advantage of convenience that blinkit offers already. The reward is interesting but as I said me ordering based on that is subject to few things.</pre></details><details class="rc warn" id="user-3"><summary>
+  <span class="rc-top"><b>User 3</b><span class="pill warn">Stopped</span></span>
+  <span class="rc-app">Zepto &middot; 2&ndash;3 a week</span>
+  <span class="rc-cat">Electronics</span>
+  <span class="rc-why">Didn't need it again. Used to buy on Amazon</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">25 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Zepto/Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  I ordered late night snacks and drinks last night
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart. Zepto for groceries mostly, because of lower cutoff for delivery price waiver. I also use blinkit but for usual groceries when cart is not big I prefer Zepto.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly groceries, snacks and beverages. I have tried Electronics and accessories, like Power bank, c-type cable, charger. I have tried skin care and personal wellness as well.
+2 · The crossing story
+The core of the interview
+Q4.  You tried [category]. Take me back — what happened that day?
+A:  Covered in Q6 and Q7
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon or Flipkart mostly.
+Q6.  How did you end up looking for it on the app at all?
+A:  I needed the product just for a day I was at someone else’s place so I looked on blinkit if they had it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  There was some uncertainty since I had never tried this before on blinkit and it was not returnable. So I had not ordered very high end product and I had seen reviews on youtube and amazon before this. But it was needed urgently so I ordered on blinkit
+Q8.  What happened when it arrived?
+A:  It was okay I still use it. I had no complaints about it.
+Q9.  ★ You also tried Personal Wellness products. It was Before or after the first?
+A:  I have tried shampoo, scrubber, face washes. I don’t remember the time specifically, I have ordered multiple times.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions only, I noticed that the price was comparable only at offline stores as well and it was convenient so I ordered.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  Everything that I ordered came to me well only, I had no reason to give up the convenience.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I think I continue almost all the categories, haven’t had any bad experience as such.
+Q14.  ★ What is different about the one that stuck?
+A:  All stuck so N/A
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A:   I ordered earphones recently from Flipkart and Whey protein from the brand site directly. I was confused for the earphones between Flipkart and Amazon as both had similar reviews on their platform, but flipkart was cheaper so I went with it.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A:  It had reviews from buyers and is usually cheap on this platform. I check reviews of everything that I buy for.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A:  I would need them to have reviews and the price should be similar if not same. Even if the price is similar I would prefer if it can be returned easily in case I have to.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A:  I haven’t had any bad experience as such.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A:  I check on Amazon/Flipkart if it isn’t urgent. I can check the reviews and is cheaper than quick commerce mostly.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  I check about the products if its okay and how are the reviews over internet, and if I cant find any and it is very urgent then I have to take a leap of faith when it is not pricey.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  Yes I once stopped buying earphone, I got in flow of ordering it on Blinkit but then stopped after thinking. Didn’t buy it from anywhere then.
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  No not really.
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Only when I feel any product is fishy, like the price is significantly high on one app than other.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart (Clothing, Electronics, Personal Wellness), would you switch? What would have to be true?
+A:  If the variety is more and I am able to find the specific product I need then I can order from here and also the reliability. Like if I had to buy a Thermus or Egg boiler then I won’t trust Star reviews for these things because these are fragile products. I prefer individual reviews on these kinds of items and I also won’t be able to return it if it doesn’t go well.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes, ofcourse it goes up.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  Clothing and fashion items, doesn’t have much variety. I also wanted to order whey from quick commerce apps but it is cheaper on the original brand sites. Also I am assured I wont be scammed and can return it easily.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  They have gotten much better with times, I have been using them for more than 3 years now.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A:  This is better than the current UI. It has the written reviews as well as the snapshot for insights. So it is like E-commerce now.
+I will prefer to order from this now if it has this. Unless the price difference is much.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  I will have to go through the reviews first, at times the reviews are skewed towards the same view and have similar time stamps so ill go through the reviews to see if they are genuine.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  Yes. I usually write reviews in case of negative experience only. Yes Yes I can do the yes no review I don’t have a problem with that.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A:  I would need a little detail like if there is some specific policies for some products or if it just like that for all then it wouldn’t make much difference. I mean I should now whats genuine in which product category
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  It looks like a checklist, of orders I should do to get a reward
+Q35.  ★ After unlocking, what happens next for you?
+A: I will take the reward and will order if I need it in future. I have tried it once so I will order from here when I would need it in future
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I will if I need it anyway in future.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A:  Yes all three of this is useful. Reviews and Explorer protection is definitely most helpful, getting easy return and review assurance. The tracker part is something that will come later I mean once I get using it regularly then I might order when its relevant suggestion, but the first two will make be trust the platform.</pre></details><details class="rc warn" id="user-4"><summary>
+  <span class="rc-top"><b>User 4</b><span class="pill warn">Stopped</span></span>
+  <span class="rc-app">Blinkit &middot; 2&ndash;3 a week</span>
+  <span class="rc-cat">Electronics</span>
+  <span class="rc-why">Didn't need it again. Spends less on the app now</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">29 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  I used it yesterday for grocery needs like bread, dahi and millk.
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart, Big Basket. I mostly order from Blinkit and Zepto. Zepto at times I prefer when cart value is small, to avoid delivery charges, and when I need something major apart from groceries as well then I choose Blinkit, when I want variety.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly it would be groceries, snacks and daily use items. I have tried electronics, Gift items, stationery, utensils, makeup/skin care and Slippers as well. I have even bought an Air fryer and Blender from Blinkit.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  I needed these products so I searched for them and then ordered when I found them.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon or Flipkart mostly for electronics. For makeup and skincare I used to order from nykka.
+Q6.  How did you end up looking for it on the app at all?
+A:  Like when I ordered blender, I went on youtube and searched for the right product and then checked where was it available. I know Blinkit has more variety as compared to other quick commerce apps so when I needed that specific product, I searched it there and ordered it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  Not really, since I had not had any bad experience on the app yet so I was a bit carefree
+Q8.  What happened when it arrived?
+A:  It arrived as per my expectations.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A:  It was before as well as after I bought blender.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I haven’t had any bad experience on the app yet so I continue purchasing what I need urgently on it. When the blender came out fine I risked to order the air fryer as well since it was a gift and I needed it urgently. I hoped I would not need to return it and it went well
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I think I continue almost all the categories when needed. Air fryer was expensive I wouldn’t order it here again if I have the time I will order somewhere where I can return it in case of any issues or if I don’t like it.
+Q14.  ★ What is different about the one that stuck?
+A:  I had the products delivered as per my expectations. I started impulsively with blender then when it turned out well so I ordered cheaper items from other categories without any worries. “Blender aagya ye to aa hi jayega”
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I ordered backpack and trolley from amazon because I had to go through reviews and also it is very common to try and return these products so I needed easy return policy.
+I bought air fryer as well but it was from Blinkit itself.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: I ordered it on Amazon because I needed some reviews and I like their return policy its quick and no questions asked.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: I would need reviews from buyers who bought it on this platform along with hassle free return like Amazon along with comparable prices. Currently I don’t prefer Blinkit over amazon for expensive unless there is an urgency for it. I wouldn’t pay more for uncertainty.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experience
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: For bag and trolley I still prefer amazon. But for electronics I trust blinkit now but only after watching the reviews of the product somewhere.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  If the product is something that I know of the brand that I know of then I continue on quick commerce. But if it is something I haven’t used and I am not sure then I would mostly move to amazon for experimenting.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No can’t remember
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  Not really
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes I check across apps mostly and compare prices among other apps.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes I will. Reason mentioned in answer of- Q18. Reviews and price mostly.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes the frequency increased. Quite a lot now I have to keep myself in check now.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  Yes any new makeup products or skin care product which I don’t have much idea about then I am skeptical and I don’t order. Also, expensive things I mostly avoid ordering as much as I can and order them from more reliable platform.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  They have gotten better with time. Infact I like the Blinkit ambulance initiative and even small things like stationary is available on the app now so it’s a relief for daily need emergencies.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A:  Yes it is better for me I can see how many people bought this and I can see the authenticity and reviews. I can now experiment more, I can give products a shot. Like I keep my cap for experiments at Rs. 800-900 mostly unless it is something urgent, so with reviews it can go upto 1500-2000 Rupees.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  yes but since blinkit will now only release this then it would take some time for them to reach substantial reviews. If they are 100-200 reviews then its fine else I cant trust 4-5 reviews
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  If any reward is given then I can write the full review.
+Yes I can surely answer the yes/no questions post delivery like the star ratings.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A: I understand that blinkit is giving return policy on genuine issues I guess. Clarity is needed.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  Needed explanation
+Q35.  ★ After unlocking, what happens next for you?
+A: I will complete it and then I would know I can order this category as well hassle free.
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I will for considerable amount and considering I need it anyway in future
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A:  Yes ofcourse I will experiment more and try new categories. All three are useful to me I guess, if I order once and I gain trust then ill anyway order again when I need it so its nice.</pre></details><details class="rc warn" id="user-5"><summary>
+  <span class="rc-top"><b>User 5</b><span class="pill warn">Stopped</span></span>
+  <span class="rc-app">Blinkit &middot; 2&ndash;3 a week</span>
+  <span class="rc-cat">Intimate &middot; Personal care &middot; Snacks</span>
+  <span class="rc-why">Couldn't return it</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">23 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  I ordered late night snacks and drinks last night
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart. I mostly order from Blinkit, because I have a habit of using it, Zepto was not in my area earlier. I prefer Blinkit anyway because it has better availability across different categories.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly food related, groceries. 
+I have tried Electronics like charging cable, blender, Extension cord. Whey also I have tried but I switch to other quick commerce as well based on price.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  It was need based at times and sometimes I just checked if they had it available on Blinkit, and then I ordered.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon or Flipkart mostly.
+Q6.  How did you end up looking for it on the app at all?
+A:  I needed the product just for a day I was at someone else’s place so I looked on blinkit if they had it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  For whey I wasn’t worried much, but for electronics I was doubtful about the warranty details and what if it doesn’t work well. I won’t be able to return it if that happens.
+Q8.  What happened when it arrived?
+A:  It was okay when it arrived, didn’t need to return it.
+Q9.  ★ You also tried Personal Wellness products. It was Before or after the first?
+A:  I don’t remember exactly, I checked and it was available so I added to my cart since I was anyway ordering from Blinkit.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions only.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I am comfortable ordering from blinkit so if I see something I need, after all this experience on the app I don’t hesitate much for small items.
+Like I ordered earphone from blinkit when I needed it immediately, it went well so now I purchased blender and other products from Blinkit.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I think I continue almost all the categories, haven’t had any bad experience as such.
+Q14.  ★ What is different about the one that stuck?
+A:  All stuck so N/A
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A:   I bought DJI go pro recently from Amazon. Apart from that mid expensive buys that I can think of is Pencil for my iPad, from Amazon.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A:  It had reviews from buyers and it was supposed to be a 3rd party company not apple pencil so I needed reviews. Blinkit has this problem it doesn’t show reviews and I couldn’t have returned it as well if it wasn’t smooth to use.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A:  I need to see the reviews of previous buyers for sure. Return policy is important as well but atleast if I have reviews to do my research well like Photos, and individual reviews then it would be better.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A:  I once ordered a bouquet it came very small in comparison to the photos basically. Photos of the real product is better if available in reviews.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A:  I check where it is available and ho many people have bought it, how are the reviews. If it is expensive and I am experimenting I would go for amazon as I can return it, else if it’s a small thing then I can order it on blinkit.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  It depends on the price and brand, if the product is standard then I can see reviews somewhere else and decide.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No can’t remember
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  No not really.
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Sometimes I do, mostly to check for price difference. But mostly now I have an idea which category is of what range so it doesn’t happen often now.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes if it has authentic reviews and return flexibility which are the main reasons to order from Amazon/Flipkart then ofcourse I would prefer Blinkit as it is much more convenient.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes, I use the app quite frequently now
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  Eggs, recently it was viral that a brand listed on it was not safe. So if the eggs were safe and cheaper I wouldn’t but them offline. Also Creatine isn’t available on it, whey buyers need creatine as well.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  They have gotten better with time.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: Yes this is better now, it has reviews and insights. Detailed reviews make a difference, I can be assured for a product now.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  Depends on quantity, if enough people have ordered on Blinkit as well then yes I would trust it ofcourse.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  No I don’t usually write a full review, unless there is some incentive for me, But yes, this yes/no I would do I have no issue with that. I can do this post delivery.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A:  If easy return is indeed hassle free then it is helpful. I can experiment here as well then.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  I understand the concept but what if I don’t need what I need what they are suggesting?
+Q35.  ★ After unlocking, what happens next for you?
+A: I will complete it then look for next list if it is useful for me.
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I will. I mean if the reward is less compared to the purchase I am about to make then I might delay it. Like if a purchase of 300-400 gives me 30 off on next order then why not.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A:  Yes then obviously I will order it here only. The main gap is that I cant return and I don’t have reviews to be sure, so if these are available then I will order it from blinkit.</pre></details><details class="rc none" id="user-6"><summary>
+  <span class="rc-top"><b>User 6</b><span class="pill none">Never tried</span></span>
+  <span class="rc-app">Blinkit &middot; 4&ndash;6 a week</span>
+  <span class="rc-cat">None, never crossed</span>
+  <span class="rc-why">Blocked on price, not on trust</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">22 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart. Mostly I use Blinkit out of habit.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Snacks mostly. Chips, ice cream etc Groceries basically. I have tried electronics, skin care and sexual wellness products,  Cigarettes at times as well. Bought a small table fan and projector as well.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  I needed it so I ordered from Blinkit. There was a power cut on a hot day so I bought the fan, and for projector also I wanted it at the earliest.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon.
+Q6.  How did you end up looking for it on the app at all?
+A:  Like when I ordered blender, I went on youtube and searched for the right product and then checked where was it available. I know Blinkit has more variety as compared to other quick commerce apps so when I needed that specific product, I searched it there and ordered it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A: Yes I was worried for the electronics what if it doesn’t work well, especially the projector.
+Q8.  What happened when it arrived?
+A:  Fan was okay but the projector I didn’t like the quality much. Now I cant even return it. It was not defective but the picture quality was not as per expectation.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A:  I had tried small products from different categories already, then I ordered table fan and then Projector was the last.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  The table fan came out well and I hadn’t had any bad experience until I ordered the projector so I went ahead with it. It had no return despite having the price of 4000.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I still continue most of the categories mostly but I don’t order any electronics above 2000 now because I know I can’t return it.
+Q14.  ★ What is different about the one that stuck?
+A:  Groceries and skin care I think I order from Blinkit only when I need it, electronics also I still order small things.
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I bought a watch and some clothes I think from Amazon. Like it was the first time I bought a decent watch it was little pricey, 5-6k range.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: The reason for choosing amazon was that I can see the photo reviews from previous buyers and it has a good variety of product. Also I can return it easily.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: It should let me return the item then, if i can return and also if they have variety with good reviews then I will buy from Blinkit obviously.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: After projector quality issue I will order such products from Amazon only.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: I still use amazon for watches and clothes for the same reason.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  Usually I just order it if its not that expensive, else I check reviews on youtube and then decide.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No can’t remember
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  I add chips and stuff only for sexual wellness
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes I have done that for price difference, like I have found it cheaper at times on Zepto so I have switched.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes I will switch. If it has easy return policy and good variety then I would prefer this.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes the frequency increased. Like if I need a printout so I just add other things as well. So it increases the cart value, sometimes to avoid delivery charge, sometimes out of habit.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A: Clothes and fashion products I think. Blinkit doesn’t have much variety yet.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A: Yes they have gotten better
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: Yes if I can read individual reviews then this is great. I can decided on the quality so I can trust the product
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  Yes  I mean it should have authenticity like if I can see people are genuine, profile photos and language then yes. I know Blinkit is bringing my product from a dark store near me, amazon has sellers who sell from corner of the world so even if I have 300 genuine reviews here against 1500 of amazon then I’ll trust it more over here.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  If I get anything out of it then I can write a full review. Yes I can answer simple Yes/No question.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A: Yes it is like Amazon Choice or amazon trusted so it gives some authenticity to it. This is nice feature.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A: Looks like a checklist of products I need to order for reward.
+Q35.  ★ After unlocking, what happens next for you?
+A: I will complete it and then I would know I can order this category as well hassle free.
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I will buy ofcourse, small things definitely I can schedule earlier.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A: Reviews and Return policy is great but this checklist is okayish. It is not something I would do regularly, I can do it for some time and then it would be as per my need. I mean if that new product is okay then ill order when I need it because I know I can order it easily here, but I won’t order again and again to fulfill the checklist.</pre></details><details class="rc warn" id="user-7"><summary>
+  <span class="rc-top"><b>User 7</b><span class="pill warn">Stopped</span></span>
+  <span class="rc-app">Blinkit &middot; 4&ndash;6 a week</span>
+  <span class="rc-cat">Two categories</span>
+  <span class="rc-why">&ldquo;No particular reason&rdquo;. Used to buy on Amazon</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">16 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  Today itself, I ordered snacks and sleeves for sun protection
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit and Swiggy Instamart. I mostly use Blinkit because it is the fastest and has the best variety.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly it would be food items like biscuits, chips and groceries. I have also ordered water bottle, shaker, skin and hair care, Toiletries, small clothing.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  It was need based, I was ordering on blinkit so I searched for these as well and then found it.
+Q5.  Where did you usually buy that kind of thing before?
+A:  I used to order from Amazon. Like for shaker and stuff I order from amazon, skin care products I used to buy from stores directly.
+Q6.  How did you end up looking for it on the app at all?
+A:  I needed it, and I already use blinkit frequently so I checked if they had it.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  What if it doesn’t come as per my expectation, I won’t be able to return in mostly and would have to talk to customer support, don’t know how that would go.
+Q8.  What happened when it arrived?
+A: It was good, it was like amazon just arrived faster.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A: Shaker was the first apart from groceries, then I tried other products.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I needed them urgently and I was okay with ordering on Blinkit as I had already tried few things.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I still continue buying these from Blinkit. Didn’t have any bad experience as of now.
+Q14.  ★ What is different about the one that stuck?
+A:  I had the products delivered as per my expectations and that too immediately.
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I cant remember anything specific but mostly I order expensive things from amazon only. 
+When asked about how expensive- I would order from amazon if it is more than 1500.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: Return policy is completely hassle free, no questions asked. Customer support is good, it has reviews and I have been ordering from amazon for quite sometime now, so I trust the platform.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: Real Customer reviews, it has star ratings but that anybody can make the UI, how would I know I it is real. Hassle free return policy like amazon and good customer support. Even if the return window is smaller I don’t mind even same day is fine. For products which I cannot return like even on Amazon not everything I can return but I take that risk there based on trust and reviews.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experience. I got egg broken once on zepto, so I switched to blinkit for that.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: Blinkit (eggs)
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  If the same thing is available on amazon or flipkart and it can arrive by the time I need itthen I order it there, else I order it here only if I have urgency.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No can’t remember. Maybe I would have in case of price differneces.
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A:  No
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes generally because of stock unavailability as per my need or if price difference huge. Mostly among Quick commerce.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes I would prefer Blinkit. What’s needed (Answered in Q18- Real Customer reviews, easy return policy and good customer support
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  I don’t think there is much difference, it increases though.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  I would like to buy electronics, but I don’t trust it for now. I know I can’t return it money will be wasted. Open box delivery is there but still that is not great.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  Yes the categories have increased and it is faster now.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: I can see it now has individual reviews and I get a snapshot or a summary. It increases the trust factor but I will still prefer amazon because of the return policy.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  Amazon has more reviews so I would trust it more. If blinkit also has enough individual reviews then yes it would also be as good.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  Yes I can write one but not necessarily. I can do yes/no questions, I might need reminders or maybe if I open the home screen I get reminder
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A:  There is something regarding gurantee. It has a banner, it might have some details once I click it. Details would be needed as in what it exactly offers.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  it shows what I have ordered and what is left to order. I explained then
+Q35.  ★ After unlocking, what happens next for you?
+A: IF my trust develops then I would continue in blinkit itself
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I can order for the reward but if something comes which I know I won’t need at all then I wont order.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A:  All are useful, reward and reviews I would say are most useful. The explorer protection one I would need more information to see what it offers.</pre></details><details class="rc ok" id="user-8"><summary>
+  <span class="rc-top"><b>User 8</b><span class="pill ok">Buys regularly</span></span>
+  <span class="rc-app">Blinkit &middot; 4&ndash;6 a week</span>
+  <span class="rc-cat">Stationery</span>
+  <span class="rc-why">The only adopter in the set</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">19 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq __________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  Today itself, I ordered snacks and sleeves for sun protection
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit, Instamart and Flipkart Minutes. I mostly use Blinkit because it’s services are prompt and it has better availability across items.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A:  Mostly it would be household items. Groceries, snacks cleaning items. I have tried printouts, stationery, Utensils, electric items like LED bulb
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  It was need based, I was ordering on blinkit so I searched for these as well and then found it.
+Q5.  Where did you usually buy that kind of thing before?
+A:  LED bulbs, printouts, utensils and stationaries I used to buy from physical stores.
+Q6.  How did you end up looking for it on the app at all?
+A:  I needed it, and I already use blinkit for household items so I checked if they had it. It happens very less that I see something on app first and know that okay they have this category as well.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A:  No it wasn’t that expensive and I buy things online anyway so I was not much worried. But yes there is normally this concern that I won’t be able to return it if doesn’t work well. It is the reason I haven’t made big purchases on the app yet.
+Q8.  What happened when it arrived?
+A: It was good, still working.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A: I tried groceries, stationery and LED first, then I tried utensils.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions. It wasn’t like I tried other things because of one thing. I tried products based on availability and need.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  My experience was good in past purchases so I continued, if I had any bad experiences and it doesn’t even have return policy then naturally people will turn away.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I didn’t need it again but yes when I need it would order again.
+Q14.  ★ What is different about the one that stuck?
+A:  I had the products delivered as per my expectations and the price was good as well.
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I ordered induction stove from Amazon it was around 6000 rupees.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: Normally I look for reviews, I trust amazon a lot for such orders, especially electronics, as I have ordered from there many a times and even when product is not as per my expectations I can return it easily.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: Firstly I should know that these products are available on Blinkit as well, I know I would get most of the things at amazon so I check there first. If I know the product is available at Blinkit and is around the same price with same reliability in terms of refund and return then I can order form there. Even if not all but just few things are recreated I will prefer. Like Amazon assured tags, so it would be better.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experiences.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: N/A
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A:  I naturally go for the brands that I know and I presume what I see will be delivered not a fake or copy, because I haven’t had that experience yet.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  Can’t remember
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A: I have not tried these categories but I don’t think I would do anything differently.
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes mostly because of price differences, I switch when I find better price on different app. 
+When asked if they will continue through same app for minor price difference if you get benefits of reviews and return, they said- Yes then minor price difference wont matter much then.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes I would prefer Blinkit. What’s needed (Answered in Q18- Real Customer reviews, easy return policy and good customer support
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Naturally. Even if frequency doesn’t increase the order size would increase.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  I don’t remember as of now.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  Yes they have gotten better definitely.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: Yes Yes definitely. If this is available then users would get more assurance and can order with more  comfort. The summary with what percentage people were satisfied with each factor is helpful along with complete reviews.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A:  Yes I will value it the same. Amazon will definitely have more reviews but here people who have ordered from blinkit specifically will write the reviews so even if it is 500 compared to 5000 of amazon and they are good reviews then it will be helpful.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  Yes I write reviews quite often for my experiences. Yes/ No answers are even better as that is quick and long reviews people wont even prefer, few yes/no questions for most important things is sufficient, that can be done. It would increase the number of reviews.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you sceptical?
+A: Yes this is what I was suggesting like Amazon choice, it should have details as well. So this is helpful for user to purchase.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  Had to be explained what it is exactly. They got the broader picture.
+Q35.  ★ After unlocking, what happens next for you?
+A: After trying if that category if my experience is good I would buy it from blinkit then for future needs.
+Q36.  Would you buy something you did not need to complete it?
+A:  Yes I can order for 1 month future needs if I am getting the reward.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A: All three are useful. If all three can’t be done atleast reviews and explorer protection should be there for easy return on new category orders.</pre></details><details class="rc bad" id="user-9"><summary>
+  <span class="rc-top"><b>User 9</b><span class="pill bad">Defected</span></span>
+  <span class="rc-app">Blinkit &middot; 4&ndash;6 a week</span>
+  <span class="rc-cat">Personal care</span>
+  <span class="rc-why">Found it cheaper on another app and moved</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">29 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq ________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  I ordered some snacks recently. Chips, Cold coffee I guess.
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit, Instamart and Flipkart Minutes. I mostly use Blinkit but for late night orders I prefer Flipkart minutes because it doesn’t charge late night fees. I love Blinkit UI, it is very easy to navigate.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A: Groceries is what I see mostly, snacks and beverages. I have also tried skin care, hair care and supplements.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  It was need based most of the times, I required the products. For food items I just see and order, it is not need based at times.
+Q5.  Where did you usually buy that kind of thing before?
+A: I used to buy these from offline stores or amazon
+Q6.  How did you end up looking for it on the app at all?
+A: I needed it urgently so I checked on the app if they had it available.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A: Yes there was some uncertainty, although I knew about the brand so I knew it won’t be that bad.
+Q8.  What happened when it arrived?
+A: It was good.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A: I ordered skin care and hair care products first then I ordered Whey Protein.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I needed it and I was willing to try it on the platform so I ordered it. I had trust on the platform from my past orders
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I continue ordering most of these on the same app.
+Q14.  ★ What is different about the one that stuck?
+A:  The products were good and were as per my expectations
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I bought clothes  and shoes online from myntra and amazon
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: I ordered it from myntra and amazon because I like the variety and I can return easily.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: I need authenticity and variety on the app. I need return assurance on this platform as well. Be it size issue or maybe I just don’t like it. Even if reviews are present then its better.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experiences.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: I check on Myntra because it has great variety of clothes and easy returns.
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A: I check reviews almost regularly before buying anything from these apps, especially electronics. If I don’t have an urgency I order from amazon or flipkart, but if I have to order anyway then I don’t order any high-end option.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No not really
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A: No
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes I compare the prices at times across the apps.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes I would switch if I have good variety like that platform, also I would need easy returns along with reviews and comparable price.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes my ordering behavior changes definitely it increases. I already order quite a lot.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  I would like to but clothings and shoes on the app. They don’t have variety currently and they don’t have easy returns.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  Yes they have gotten better
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: Yes this is better, it has individual reviews as well as the snapshot. It is like e-commerce reviews now. I will prefer to order here unless the price difference is huge.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A: Yes I will. Reviews are reviews but the number should be enough.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  I don’t write reviews generally, if there is some benefit then I might write. I can answer yes/no questions.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you skeptical?
+A: I see the Explorer protected tab. So I think it has something to do with authenticity and easy returns but what exactly is it?
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  It looks like a checklist of items and milestone like record for my orders.
+Q35.  ★ After unlocking, what happens next for you?
+A: Once I order from this category I will definitely continue unless the experience isn’t good.
+Q36.  Would you buy something you did not need to complete it?
+A: Yes I can buy next month’s requirement.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A: Ofcourse this is very helpful it gives me an easy entry to new categories and then I can continue if I need to</pre></details><details class="rc ok" id="user-10"><summary>
+  <span class="rc-top"><b>User 10</b><span class="pill ok">More willing now</span></span>
+  <span class="rc-app">Blinkit &middot; Monthly</span>
+  <span class="rc-cat">Five categories</span>
+  <span class="rc-why">The widest sampler in the set</span>
+  <span class="rc-cta">Answer sheet<span class="rc-dur">24 min</span></span>
+</summary><pre>Interview Answer Sheet
+Blinkit category exploration · one copy per respondent · fill straight after the interview, while it is fresh
+Cell:  segment / adopter / never-tried | Main app ____Blinkit______ | Freq ________ | Recording saved?   ☐
+HOW TO FILL THIS
+Write in whatever language they used — Hindi, Hinglish, English, mixed. Do NOT translate as you go. I read the mix directly.
+Summarise most answers in a line or two. You do not need every word.
+For a line you think could be a slide quote, write it EXACTLY as said and tag it [V] for verbatim. Everything else is assumed summarised.
+★ marks the highest-value questions. If short on time, these are the ones to get right.
+If a question did not apply (e.g. only one category tried), write N/A — that is data, not a gap.
+Leave the two logs at the end for last — fill them from memory once the answers are down.
+1 · Warm-up
+Canvas: who are the customers
+Q1.  Last time you ordered on a 10-minute app — what, what time, what prompted it?
+A:  I have come to my hometown currently so the frequency has gone down, I don’t need to order much, but it would be mostly groceries or snacks
+Q2.  Which apps on your phone now? Which do you open first, and why that one?
+A: Zepto, Blinkit, Instamart. I mostly use Blinkit and Zepto as well. Blinkit is more convenient and faster, zepto ss cheaper but the chips came covered in dirt on it but on blinkit this wasn’t an issue. Also, over time I think I have ordered so much on blinkit that the customer support have good response to me now.
+Q3.  Last ten orders — what would I see? What categories have you tried?
+A: Mostly groceries, snacks and drinks. I have ordered bedsheets, Printouts, Cleaning items, stationery, electronics I have tried just power bank I don’t trust it for electronics.
+2 · The crossing story
+The core of the interview
+Q4.  You tried new categories. Take me back, what happened that day?
+A:  It was need based, I would look for specific porducts, if I find it then I order it. At times I have discovered products while browsing as well but its usually rare.
+Q5.  Where did you usually buy that kind of thing before?
+A: I used to buy from local shop or amazon/flipkart before blinkit.
+Q6.  How did you end up looking for it on the app at all?
+A: I just needed it, and I had already added items in my cart I was ordering anyway so I added what I needed.
+Q7.  ★ Before you tapped buy — what was going through your mind?
+A: Yes in that case I was no very sure about the power bank that I ordered, but I was in a power cut so I ordered it anyway because it was not that expensive and I was regular blinkit user.
+Q8.  What happened when it arrived?
+A: It was good, still working.
+Q9.  ★ You also tried other category products. It was Before or after the first?
+A: I tried groceries and small things first, by the time I needed power bank I had already ordered from a lot of categories.
+Q10.  ★ Did the first have anything to do with the second? Or separate occasions?
+A:  No these were separate occasions.
+Q11.  If separate — what would have made you think “that went well, what else could I get here?”
+A:  I mean my experience has been good only, I don’t have any issue in trying new categories on blinkit, and if I have faith in one category on blinkit then I can order from new category as well.
+Q12.  If connected — what carried you from one to the next?
+A:  N/A
+Q13.  ★ Which do you still buy on the app? Which did you stop?
+A:  I continue ordering from blinkit
+Q14.  ★ What is different about the one that stuck?
+A:  I had the products delivered as per my expectations. If the thing I want is there on the app then I order it.
+Q15.  If nothing stuck — was there ever a moment you nearly made it a habit?
+A:  N/A
+3 · The channel question
+Canvas: true problem
+Q16.  Last unfamiliar or expensive thing you bought online anywhere — where, and what did you look at before deciding?
+A: I ordered mobile phone and Books, as well.
+Q17.  ★ If Amazon/Flipkart — what specifically did you look at on that page?
+A: Major reason is the variety available on Amazon and the trust I have on the platform.
+Q18.  What would that product need to show you on a 10-min app for you to buy it there instead?
+A: Since I have not faced any issues as such yet, I am okay ordering from it but yes if they have variety like amazon and I can return my items if I don’t like it then it’s a big plus.
+Q19.  ★ Has a bad experience on one of these apps ever changed what you use it for?
+A: No I don’t have any bad experiences.
+Q20.  If yes — what do you use it for now that you did not before, or stopped?
+A:  N/A
+Q21.  Where do you check first now when you need that category?
+A: N/A
+4 · Workarounds
+Part 3 requirement · Canvas: how do we know it is real
+Q22.  ★ When unsure about a product on these apps, what do you actually DO?
+A: I then check reviews for the product since I cannot have the review for the experience other people had on blinkit specifically, so I check for the product itself.
+Q23.  Anything ever stopped you completing an order you had started? What did you do instead?
+A:  No mostly I go ahead and order.
+Q24.  ★ Do you do anything differently for something personal or sensitive?
+A: No
+Q25.  Ever checked something on one app and bought on another? Talk me through it.
+A:  Yes it happens mostly in case of price differences or maybe when I don’t have enough quantity of something I want on that app.
+5 · Value and urgency
+Canvas: value + why now
+Q26.  If the app were as reliable for the things you buy from Amazon/Flipkart would you switch? What would have to be true?
+A:  Yes as long as I have hassle free returns I have now issue in ordering. My biggest concern is this only that if my product is not what I wanted it to be then you have to take it back. If you make it a hassle for me then I won’t come back.
+Q27.  When you started buying something new there, did your overall ordering change?
+A:  Yes like I said I have added new things that I needed, to my cart because I was ordering groceries anyway.
+Q28.  Anything you would like to buy on these apps today but do not? Why not?
+A:  I would like to buy books, gaming chair and some stuff  which are available on Amazon. I would love the variety.
+Q29.  Are these apps getting better or worse at this vs a year ago?
+A:  Yes they have gotten better definitely.
+6 · Concept test-
+6a · Review Snapshot
+Q30.  Would this change your decision, or would you still check Amazon?
+A: Yes this is better, I think I can depend on it, the individual opinions wouldn’t matter much because I know people will write only in case of extremes be it goodor bad. So I would like the overall picture it is showing and not lean on individual reviews. If I get these simple answers like a MOM test where I know only whats important and no noise then it’s better.
+Q31.  ★ Would you trust a Blinkit review as much as an Amazon one?
+A: As I said i don’t get bothered by individual reviews, it is more about the overall more general picture so I find this snapshot more informative.
+Q32.  Would you ever write one? If not then would you answer simple yes/no questions like star ratings after delivery?
+A:  I don’t write reviews generally but I can answer this Yes/No questions that are actually important.
+6b · Explorer Protection
+Q33.  What does this make you think? Anything make you skeptical?
+A: Yes this is okay but will it be valid for the sub categories like I can avail it for earphones, blenders separately or will it be over once I order any electronics just once. It should be for the sub-categories as well. For trust building it is a good thing a person who hasn’t used blinkit for electronics yet can definitely experiment with this but yes for me personally I would prefer sub-categories to be covered.
+6c · Explorer tracker
+Q34.  What would you do with this? Did they get it without explanation?
+A:  Had to be explained what it is exactly. They got the broader picture. I may or may not agree with the categories that blinkit suggests,instead it would be better if I can order new categories and it shows how many I have done and what remains like a milestone. It should be valid for suggested new category + any new category. I should see the progress like milestones of what I have ordered on the app and what remains.
+Q35.  ★ After unlocking, what happens next for you?
+A: I continue to order what I have tried once. This is my usual habit on this app.
+Q36.  Would you buy something you did not need to complete it?
+A: Yes I can buy next month’s requirement for the milestone as well. I would like to see the progress I like the gamified experience.
+6d · Explorer mode- Easy amazon like return on first order in new category, purchase based suggestion + freedom to choose any new category and still be eligible for reward, Reviews of products available. (Explained to them they will have this on home page like promotions)
+Q37.  ★ Of the three, which matters to you? Which is noise? Would you order for new categories from Blinkit now?
+A: All three are helpful. I like the gamified experience and the easy return part. I already try new categories and the for the categories, discoverability is not an issue for me, but still for the categories I am unsure about  this push can be helpful.</pre></details></div>
+    <div class="say">8 Blinkit-primary &middot; 1 Zepto &middot; 1 never tried &middot; 1 adopter
+      &middot; 3 couldn't return &middot; 2 defected &middot; 4 bought a sensitive category.</div></div>
+</div>
+
+<footer>Blinkit product brief &middot; primary research artefact for slide 4 &middot; survey n=51
+recomputed 25 Jul 2026, interviews n=10 coded 27 Jul 2026 &middot; answer sheets reproduced as
+written, identifiers removed.</footer>
+</div>
+</body>
+</html>

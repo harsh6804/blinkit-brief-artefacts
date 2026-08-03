@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blinkit Explorer · user trial</title>
+<meta name="description" content="Seven unmoderated testers on the deployed MVP: the rubric-scored comprehension answer, six Likert statements, and the limits on what n=7 can claim.">
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#0B3B21;--g800:#14532D;--g600:#1F9D55;--g100:#EAF6EE;
+  --y500:#FFC72C;--y700:#8A6100;--y100:#FEF6E0;
+  --r600:#D64545;--r100:#FDECEC;
+  --k900:#111827;--k600:#4B5563;--k400:#6B7280;
+  --line:#E5E7EB;--surface:#fff;--s2:#F9FAFB;
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--k900);background:#EEF0F3;line-height:1.45;font-size:16px;padding-bottom:40px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+
+/* header band */
+header.top{background:linear-gradient(135deg,#0B3B21 0%,#0F4227 45%,#16532E 100%);
+  color:#fff;padding:26px 0 22px;margin-bottom:18px}
+header.top .hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+header.top h1{font-size:31px;line-height:1.14;font-weight:800;letter-spacing:-.015em}
+header.top h1 span{color:var(--y500)}
+header.top .kicker{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#8FC7A6;margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:640px}
+.chip{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);color:#E6F4EC;border-radius:999px;padding:4px 11px;white-space:nowrap}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+  min-width:0;display:flex;flex-direction:column}
+.card.tint-g{background:var(--g100);border-color:#BFE3CD}
+.card.tint-a{background:var(--y100);border-color:#F2DFA8}
+.card.tint-r{background:var(--r100);border-color:#F3C9C9}
+.card.dark{background:#0F2A1B;border-color:#0B3B21;color:#fff}
+h2{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--g800);margin-bottom:9px;display:flex;align-items:baseline;gap:8px}
+h2 em{font-style:normal;color:var(--k400);letter-spacing:.04em;font-weight:700}
+.card.dark h2{color:var(--y500)}
+.card.tint-a h2{color:var(--y700)}
+.card.tint-r h2{color:#8B2020}
+.say{font-size:14px;color:var(--k600);margin-top:auto;padding-top:10px}
+.say b{color:var(--k900)}
+.card.dark .say{color:#CFE6D8}
+.card.dark .say b{color:#fff}
+
+/* kpi */
+.kpi{text-align:left}
+.kpi .n{font-size:38px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--g800)}
+.kpi .n.zero{color:var(--r600)}
+.kpi .n small{font-size:19px;font-weight:700;letter-spacing:0}
+.kpi .n.word{font-size:25px;line-height:1.08;letter-spacing:-.01em}
+.kpi .l{font-size:13.5px;color:var(--k600);margin-top:7px;line-height:1.35}
+.kpi .l b{color:var(--k900)}
+
+/* spans */
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}
+.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s9c{grid-column:span 9}
+.s12{grid-column:span 12}
+@media(max-width:1000px){
+  .s2,.s3,.s4,.s5{grid-column:span 6}
+  .s7,.s8,.s9c{grid-column:span 12}
+}
+@media(max-width:640px){.s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9c{grid-column:span 12}}
+
+/* donut */
+.dwrap{display:flex;gap:16px;align-items:center}
+.legend{list-style:none;flex:1;min-width:0}
+.legend li{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);
+  font-size:14px;line-height:1.3}
+.legend li:last-child{border-bottom:0}
+.legend .sw{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+.legend .ct{margin-left:auto;font-weight:800;font-size:19px;padding-left:10px}
+.legend small{display:block;color:var(--k400);font-size:12.5px}
+
+/* likert */
+.lk{list-style:none}
+.lk li{display:grid;grid-template-columns:1fr 108px 132px;gap:10px;align-items:center;
+  padding:7px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.3}
+.lk li:last-child{border-bottom:0}
+.pips{display:flex;gap:3px}
+.pips i{width:18px;height:10px;border-radius:2px;background:var(--line)}
+.pips i.on{background:var(--g600)}
+.pips i.on.w{background:var(--y500)}
+.lk .ag{font-size:13px;color:var(--k600);text-align:right}
+.tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+.tag.g{background:var(--g100);color:var(--g800)}
+.tag.a{background:var(--y100);color:var(--y700)}
+
+/* bars */
+.bars{list-style:none}
+.bars li{display:grid;grid-template-columns:1fr 40px;gap:8px;align-items:center;padding:3px 0}
+.bars .bar{position:relative;height:24px;border-radius:5px;background:var(--s2);overflow:hidden}
+.bars .bar .f{position:absolute;inset:0 auto 0 0;background:var(--g100);border-right:2px solid var(--g600)}
+.bars .bar .f.a{background:var(--y100);border-right-color:var(--y500)}
+.bars .bar .t{position:relative;display:block;padding:3px 8px;font-size:13.5px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.bars .v{text-align:right;font-weight:800;font-size:14px}
+
+/* rank comparison */
+.rank{display:grid;grid-template-columns:1fr 46px 1fr;gap:10px;align-items:center}
+.rank .col{list-style:none}
+.rank .col li{display:flex;align-items:center;gap:8px;height:42px;padding:0 11px;margin-bottom:7px;
+  border:1px solid var(--line);border-radius:8px;background:var(--s2);font-size:14px;line-height:1.2}
+.rank .col li .r{font-weight:800;color:var(--k400);width:15px;flex:0 0 auto}
+.rank .col li .c{margin-left:auto;font-weight:800}
+.rank .col li.hit{background:var(--g100);border-color:#BFE3CD}
+.rank .col li.hit .r,.rank .col li.hit .c{color:var(--g800)}
+.rank .mid{text-align:center;color:var(--k400);font-size:11px;font-weight:800;letter-spacing:.08em}
+.rank .mid div{height:42px;margin-bottom:7px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:#C9CED6}
+.rank .mid div.up{color:var(--g600)}
+.rankhead{display:flex;justify-content:space-between;font-size:12px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--k400);margin-bottom:8px}
+
+/* quote chips */
+.qs{list-style:none;display:flex;flex-direction:column;gap:6px}
+.qs li{font-size:13.5px;line-height:1.35;padding:7px 10px;background:var(--s2);
+  border-left:2px solid var(--g600);border-radius:0 6px 6px 0}
+.qs li.mute{border-left-color:#C9CED6;color:var(--k600)}
+
+/* claim columns */
+.claim{list-style:none}
+.claim li{padding:5px 0 5px 20px;position:relative;font-size:14px;line-height:1.35}
+.claim li:before{position:absolute;left:0;top:5px;font-weight:800}
+.claim.may li:before{content:"\2713";color:var(--g600)}
+.claim.not li:before{content:"\00D7";color:var(--r600);font-size:17px;top:3px}
+
+/* respondent cards, each one opens its own answer sheet */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:9px}
+details.rc{border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  overflow:hidden;border-top:3px solid #C9CED6}
+details.rc.ok{border-top-color:var(--g600)}
+details.rc.warn{border-top-color:var(--y500)}
+details.rc.bad{border-top-color:var(--r600)}
+details.rc.none{border-top-color:#9CA3AF}
+details.rc>summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:5px;
+  padding:11px 12px 10px}
+details.rc>summary::-webkit-details-marker{display:none}
+details.rc>summary:hover{background:var(--s2)}
+.rc-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.rc-top b{font-size:16px;font-weight:800;color:var(--k900);letter-spacing:-.01em}
+.pill{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:999px;padding:3px 7px;white-space:nowrap}
+.pill.ok{background:var(--g100);color:var(--g800)}
+.pill.warn{background:var(--y100);color:var(--y700)}
+.pill.bad{background:var(--r100);color:#8B2020}
+.pill.none{background:#EEF0F3;color:var(--k600)}
+.rc-app{font-size:12.5px;font-weight:700;color:var(--k900)}
+.rc-cat{font-size:12px;color:var(--g800);background:var(--g100);border-radius:5px;
+  padding:3px 7px;align-self:flex-start;line-height:1.3}
+.rc-why{font-size:12.5px;color:var(--k600);line-height:1.35}
+.rc-cta{display:flex;align-items:center;justify-content:space-between;margin-top:3px;
+  padding-top:8px;border-top:1px solid var(--line);font-size:11.5px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--g600)}
+.rc-cta:after{content:"\203A";font-size:17px;line-height:1;margin-left:6px;color:var(--g600)}
+details.rc[open]>summary .rc-cta{color:var(--k400)}
+details.rc[open]>summary .rc-cta:after{content:"\2039";color:var(--k400)}
+.rc-dur{font-weight:600;letter-spacing:0;text-transform:none;color:var(--k400);margin-left:auto;
+  margin-right:4px}
+details.rc[open]{grid-column:1/-1}
+details.rc pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,
+  Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--k900);background:var(--s2);
+  padding:14px;max-height:62vh;overflow:auto;border-top:1px solid var(--line)}
+
+/* limitation list */
+.lim{list-style:none;counter-reset:l}
+.lim li{counter-increment:l;position:relative;padding:6px 0 6px 26px;font-size:13.5px;line-height:1.4;
+  color:var(--k600)}
+.lim li:before{content:counter(l);position:absolute;left:0;top:6px;width:18px;height:18px;
+  border-radius:50%;background:var(--y500);color:#3A2C00;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.lim li b{color:var(--k900)}
+
+/* transcripts */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+details.ts{border:1px solid var(--line);border-radius:9px;background:var(--surface);overflow:hidden}
+details.ts>summary{cursor:pointer;padding:10px 12px;font-weight:700;font-size:14px;color:var(--g800);
+  list-style:none;display:flex;flex-direction:column;gap:2px;background:var(--s2)}
+details.ts>summary::-webkit-details-marker{display:none}
+details.ts>summary i{font-style:normal;font-weight:500;font-size:11.5px;color:var(--k400)}
+details.ts[open]{grid-column:1/-1}
+details.ts pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,
+  Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--k900);background:#fff;
+  padding:14px;max-height:62vh;overflow:auto;border-top:1px solid var(--line)}
+footer{font-size:12.5px;color:var(--k400);padding-top:6px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><div class="hrow">
+  <div><div class="kicker">Blinkit Explorer &middot; MVP user trial</div><h1>Seven people opened the build<br>and were <span>told nothing about it</span>.</h1></div>
+  <div class="chips"><span class="chip">n = 7 unique testers</span><span class="chip">9 responses, 2 paired sessions collapsed</span><span class="chip">identical task list</span><span class="chip">unmoderated, on a phone</span><span class="chip">13 questions, anonymous</span><span class="chip">6 of 7 order a few times a week</span></div>
+</div></div></header>
+
+<div class="wrap">
+
+<div class="grid">
+  <div class="card s3 kpi"><div class="n">7<small> of 7</small></div><div class="l">described <b>how the limit rises</b> correctly, with nobody explaining it to them</div></div>
+  <div class="card s3 kpi"><div class="n zero">0<small> of 7</small></div><div class="l">read it as a <b>discount, cashback or loyalty tier</b></div></div>
+  <div class="card s3 kpi">
+    <div class="n word">Strongly<br>agree</div>
+    <div class="pips" style="margin-top:9px">
+      <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="l">the <b>median answer</b>, top of the five point agreement scale, to
+      &ldquo;I'd be more willing to try a category I've never bought&rdquo;</div>
+  </div>
+  <div class="card s3 kpi"><div class="n">6<small> of 7</small></div><div class="l">had already <b>walked away from a purchase</b> over return doubt</div></div>
+</div>
+
+<div class="grid">
+  <div class="card s5">
+    <h2>The one markable answer <em>C1, fixed rubric</em></h2>
+    <div class="dwrap"><svg width="128" height="128" viewBox="0 0 120 120" style="flex:0 0 auto" role="img" aria-label="Four of seven correct on both directions, three on the rise only, none read it as a promotion."><circle cx="60" cy="60" r="46" fill="none" stroke="#E5E7EB" stroke-width="22"/><circle cx="60" cy="60" r="46" fill="none" stroke="#1F9D55" stroke-width="22" stroke-dasharray="165.16 123.87" stroke-dashoffset="-0.00" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="46" fill="none" stroke="#FFC72C" stroke-width="22" stroke-dasharray="123.87 165.16" stroke-dashoffset="-165.16" transform="rotate(-90 60 60)"/><text x="60" y="55" text-anchor="middle" font-size="26" font-weight="800" fill="#111827">7</text><text x="60" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#6B7280" letter-spacing="1.2">TESTERS</text></svg>
+      <ul class="legend">
+        <li><span class="sw" style="background:#1F9D55"></span>
+          <span>Both directions right<small>keep it, limit rises &middot; return it, limit falls</small></span>
+          <span class="ct" style="color:var(--g800)">4</span></li>
+        <li><span class="sw" style="background:#FFC72C"></span>
+          <span>The rise only<small>the fall missing or wrong</small></span>
+          <span class="ct" style="color:var(--y700)">3</span></li>
+        <li><span class="sw" style="background:#D64545"></span>
+          <span>A promotion<small>discount, cashback or tier</small></span>
+          <span class="ct" style="color:var(--r600)">0</span></li>
+      </ul>
+    </div>
+    <div class="say">The empty row is the strongest number here. An instrument that rewards keeping
+      things is one wrong word from reading as a coupon, and <b>nobody made that mistake</b>.</div>
+  </div>
+
+  <div class="card s7">
+    <h2>Six statements <em>1 strongly disagree &rarr; 5 strongly agree</em></h2>
+    <ul class="lk"><li><span>I'd be more willing to try a category I've never bought on Blinkit before<span class="tag g">thesis</span></span><span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="ag">7 of 7 agree, 6 strongly</span></li><li><span>&ldquo;What buyers report&rdquo; told me more than a star rating</span><span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="ag">7 of 7 agree</span></li><li><span>Felt like part of the Blinkit app, not bolted on</span><span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="ag">6 strongly, 1 neutral</span></li><li><span>Understood the Explorer Limit without explanation</span><span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="ag">7 of 7 agree</span></li><li><span>Felt earned through my orders, not a discount handed to me</span><span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="ag">6 agree, 1 neutral</span></li><li><span>Could tell which products it applied to<span class="tag a">weakest</span></span><span class="pips"><i class="on w"></i><i class="on w"></i><i class="on w"></i><i class="on w"></i><i></i></span><span class="ag">6 agree, <b>1 disagree</b></span></li></ul>
+    <div class="say">Knowing <b>which products the cover applied to</b> is the only statement anyone
+      disagreed with, and it is the same gap the open answers name.</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card s5">
+    <h2>What confused them <em>C2, open text</em></h2>
+    <ul class="qs">
+      <li>&ldquo;Understood the return limit concept <b>after trying it</b>, was confused a little bit before trying.&rdquo;</li>
+      <li>&ldquo;I was unable to find the return button after ordering&hellip; new pop ups were confusing at first.&rdquo;</li>
+      <li class="mute">&ldquo;Selecting/knowing the items in category for free return if it is not auto selected&rdquo;</li>
+      <li class="mute">&ldquo;Can I only order a single item with this limit?&rdquo; &middot; &ldquo;Understanding the limit&rdquo;
+        &middot; &ldquo;Maybe understanding the words&rdquo; &middot; &ldquo;None&rdquo;</li>
+    </ul>
+    <div class="say"><b>3 of 7</b> say a version of confusing before I tried it, clear once I ordered.
+      It explains itself <b>through use, not on sight</b>. That is a named failure mode, not a pass.</div>
+  </div>
+
+  <div class="card s3">
+    <h2>Still would not buy <em>C3</em></h2>
+    <div class="kpi"><div class="n">6<small> of 7</small></div>
+      <div class="l">named <b>nothing at all</b></div></div>
+    <ul class="qs" style="margin-top:11px"><li class="mute">The seventh named <b>clothes</b>,
+      &ldquo;because of limited options&rdquo;.</li></ul>
+    <div class="say">Take the risk away and what is left is <b>range, not risk</b>.</div>
+  </div>
+
+  <div class="card s4 tint-a">
+    <h2>The one objection</h2>
+    <ul class="qs" style="margin-bottom:4px"><li class="mute">&ldquo;I don't like my spending being
+      limited&hellip; the spend limits felt more like I'm being forced to look at specific items.&rdquo;</li></ul>
+    <div class="say"><b>1 of 7.</b> At this sample that is one person, not a pattern. It is the only
+      substantive criticism in the set and it points at the same gap as the weakest score.</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card s6 tint-g">
+    <h2>What this supports</h2>
+    <ul class="claim may">
+      <li>7 of 7 described the rise correctly, unaided.</li>
+      <li>0 of 7 read it as a discount.</li>
+      <li>The median answer on willingness to try a new category was <b>strongly agree</b>, the top
+        of the five point scale, with 7 of 7 agreeing and 6 of them strongly.</li>
+      <li>6 of 7 had previously skipped a purchase over return uncertainty, 5 of them more than once.</li>
+    </ul>
+    <div class="say">Two things make it worth more than its n: every tester got the
+      <b>identical task list</b>, and C1 was scored against a <b>rubric fixed before</b> the
+      responses were read.</div>
+  </div>
+  <div class="card s6 tint-r">
+    <h2>What it does not support</h2>
+    <ul class="claim not">
+      <li>That it increases exploration.</li>
+      <li>That it changes basket size.</li>
+      <li>That any of this holds at scale.</li>
+      <li>At n=7, self reported intent is <b>directional</b>. A signal to build the next test on,
+        not a result.</li>
+    </ul>
+    <div class="say">Nine responses came in. Two near-identical pairs were collapsed to their
+      earlier submission, which is why the denominator is <b>7 and not 9</b>.</div>
+  </div>
+</div>
+
+<footer>Blinkit Explorer user trial &middot; supporting artefact for slide 10 &middot; counts
+reported as collected, nothing modelled or extrapolated.</footer>
+</div>
+</body>
+</html>
