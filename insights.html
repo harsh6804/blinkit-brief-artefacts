@@ -138,14 +138,21 @@ h2 em{font-style:normal;color:var(--k400);letter-spacing:.04em;font-weight:700}
 .idnote b{color:var(--k600)}
 /* respondent cards, each one opens its own answer sheet */
 .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:9px}
+/* The grid stretches every card in a row to the same height, but the summary inside only ever
+   grew to fit its own text — and .rc-why runs to one line for some respondents and two for
+   others. So "Answer sheet" landed at a different height in every card and the row of them
+   stepped up and down. The card is a column, the closed summary fills it, and the CTA is
+   pushed to the bottom, so the rule and the label sit on one line across the whole row. */
 details.rc{border:1px solid var(--line);border-radius:10px;background:var(--surface);
-  overflow:hidden;border-top:3px solid #C9CED6}
+  overflow:hidden;border-top:3px solid #C9CED6;display:flex;flex-direction:column}
 details.rc.ok{border-top-color:var(--g600)}
 details.rc.warn{border-top-color:var(--y500)}
 details.rc.bad{border-top-color:var(--r600)}
 details.rc.none{border-top-color:#9CA3AF}
 details.rc>summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:5px;
-  padding:11px 12px 10px}
+  padding:11px 12px 10px;flex:1 1 auto}
+/* ...but an OPEN card must not stretch its summary over the answer sheet below it. */
+details.rc[open]>summary{flex:0 0 auto}
 details.rc>summary::-webkit-details-marker{display:none}
 details.rc>summary:hover{background:var(--s2)}
 .rc-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
@@ -160,7 +167,7 @@ details.rc>summary:hover{background:var(--s2)}
 .rc-cat{font-size:12px;color:var(--g800);background:var(--g100);border-radius:5px;
   padding:3px 7px;align-self:flex-start;line-height:1.3}
 .rc-why{font-size:12.5px;color:var(--k600);line-height:1.35}
-.rc-cta{display:flex;align-items:center;justify-content:space-between;margin-top:3px;
+.rc-cta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;
   padding-top:8px;border-top:1px solid var(--line);font-size:11.5px;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;color:var(--g600)}
 .rc-cta:after{content:"\203A";font-size:17px;line-height:1;margin-left:6px;color:var(--g600)}
